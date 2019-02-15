@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    include: default
+    active: default,test
+
+starter:
+  web-client:
+    connect-timeout-ms: 7_000
+    request-timeout-seconds: 3

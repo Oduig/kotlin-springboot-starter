@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: kotlin-springboot-starter
+  profiles:
+    active: dev # Default profile
+  main:
+    banner-mode: "off" # Turns off Spring Boot banner spam. Needs to be quoted.
+  h2: # Suppress query logging
+    console:
+      enabled: false
+  resources:
+    add-mappings: false # For zalando-problem exception handling
+  mvc:
+    throw-exception-if-no-handler-found: true # For zalando-problem exception handling
+      # Defaults for postgres databases
+      # jpa:
+      #   database: POSTGRESQL
+      #   show-sql: false
+      #   open-in-view: false
+      #   properties:
+      #     hibernate:
+      #       temp:
+      #         use_jdbc_metadata_defaults: false
+      #       jdbc:
+      #         time_zone: UTC # Prevent Hibernate from auto-interpreting UTC timestamps as locally zoned
+      # datasource:
+      #   name: your-database
+      #   platform: postgres
+      #   driver-class-name: org.postgresql.Driver
+      #   hikari:
+      #     poolName: SpringBootJPAHikariCP
+      #     minimum-idle: 5
+      #     maximum-pool-size: 20
+    # flyway:
+    #   enabled: true
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.github.oduig: info
+
+starter:
+  sloth-delay-ms: 3_000
+  cors:
+    methods:
+      - OPTIONS
+      - HEAD
+      - GET
+      - PUT
+      - POST
+      - DELETE
+      - PATCH
+    origins:
+      - "https://example.com"
+      - "http://localhost:8080"
+      - "null" # for non-browser requests like Postman or third party services
+    routes:
+      - "/"
+      - "/api"
+      - "/api/v1"
+      - "/api/v1/sloth"
+  web-client:
+    connect-timeout-ms: 42_000
+    request-timeout-seconds: 600

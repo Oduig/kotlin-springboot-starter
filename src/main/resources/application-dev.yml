@@ -1,0 +1,7 @@
+# Uncomment for full SQL query logging
+#  jpa:
+#    show-sql: true
+
+#logging:
+#  level:
+#    com.github.oduig: debug
